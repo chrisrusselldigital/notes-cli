@@ -13,10 +13,16 @@ end
     expect(notebook.notebook).to eq([])
   end
 
-  it "creates a notes" do
+  it "returns instructions" do
     notebook = Notebook.new
-    note = MockNote.new
-    expect(notebook.create_note).to eq({})
+    expect(notebook.instructions).to eq("Please choose an option, or \'help\'.")
+  end
+
+  it "takes user input" do
+    notebook = Notebook.new
+    allow($stdin).to receive(:gets).and_return('help')
+    input = $stdin.gets
+    expect(notebook.help).to eq('help')
   end
 
 end
