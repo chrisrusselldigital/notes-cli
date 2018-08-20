@@ -1,16 +1,20 @@
-@note = []
 
-puts "Enter a name for the note:"
-name = gets.chomp
-@note << name
+class Note
 
-while name != "stop"
-  puts "Enter a name for the note:"
-  name = gets.chomp
-  @note << name
-  if name == "stop"
-    @note.pop
+  def initialize
+    @note = {
+      :name => "name",
+      :contents => "contents",
+      :created => Time.now
+    }
+
   end
-end
 
-p @note
+  def create_note
+    puts "Enter a name for the note:"
+    name = gets.chomp
+    @note[:name] = name
+    p @note
+  end
+
+end
