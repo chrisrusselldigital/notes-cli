@@ -1,22 +1,38 @@
 class Note
 
   def initialize
-    @note = {
-      :name => "name",
-      :contents => "contents",
-      :created => Time.now
-
-    }
+    @notebook = []
 
   end
 
-  def create_note
-    puts "Enter a name for the note:"
+  def new_note
+    @note = {
+      name: "name",
+      content: "content",
+      time: "time"
+    }
     name = gets.chomp
     @note[:name] = name
-    puts "Enter some content in the note:"
-    contents = gets.chomp
-    @note[:contents] = contents
+    content = gets.chomp
+    @note[:content] = content
+    time = Time.now.strftime('%d-%m-%Y')
+    @note[:time] = time
+    @notebook << @note
+  end
+
+  def all_notes_header
+    puts " Name || Content || Created "
+  end
+
+  def all_notes
+    @notebook.each do |item|
+      puts " #{item[:name]} || #{item[:content]} || #{item[:time]} "
+    end
+  end
+
+  def print
+    all_notes_header
+    all_notes
   end
 
 
