@@ -17,9 +17,15 @@ end
     end
   end
 
+  def notes_header
+
+  end
+
   def new_note
     @note ||= Note.new
+    @notebook.push(@note)
     @note.create_note
+    p @notebook
   end
 
   def help

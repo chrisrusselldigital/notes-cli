@@ -1,4 +1,3 @@
-
 class Note
 
   def initialize
@@ -6,6 +5,7 @@ class Note
       :name => "name",
       :contents => "contents",
       :created => Time.now
+
     }
 
   end
@@ -14,7 +14,11 @@ class Note
     puts "Enter a name for the note:"
     name = gets.chomp
     @note[:name] = name
-    p @note
+    puts "Enter some content in the note:"
+    contents = gets.chomp
+    @note[:contents] = contents
   end
+
+
 
 end
