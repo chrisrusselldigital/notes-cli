@@ -1,19 +1,16 @@
-class Note
+class Notes
+
+  attr_reader :notebook
 
   def initialize
     @notebook = []
-
   end
 
-  def new_note
+  def write_note(content)
     @note = {
-      name: "name",
       content: "content",
       time: "time"
     }
-    name = gets.chomp
-    @note[:name] = name
-    content = gets.chomp
     @note[:content] = content
     time = Time.now.strftime('%d-%m-%Y')
     @note[:time] = time
@@ -21,12 +18,12 @@ class Note
   end
 
   def all_notes_header
-    puts " Name || Content || Created "
+    puts " Content || Created "
   end
 
   def all_notes
     @notebook.each do |item|
-      puts " #{item[:name]} || #{item[:content]} || #{item[:time]} "
+      puts "#{item[:content]} || #{item[:time]}"
     end
   end
 
@@ -34,7 +31,5 @@ class Note
     all_notes_header
     all_notes
   end
-
-
 
 end
