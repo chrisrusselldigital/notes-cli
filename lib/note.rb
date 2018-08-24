@@ -5,12 +5,10 @@ class Note
     @name = name
     @contents = contents
       @note = {
-        Date: Time.now,
-        Name: name,
-        Contents: contents
+        Contents: contents,
+        Date: Time.now
       }
   end
-
 
 
 end
