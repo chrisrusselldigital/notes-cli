@@ -1,4 +1,4 @@
-require_relative 'note'
+require_relative 'spike_note'
 
 class Commands
 
