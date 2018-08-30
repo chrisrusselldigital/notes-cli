@@ -4,6 +4,7 @@ class Notes
 
   def initialize
     @notebook = []
+    @note_id = 0
   end
 
   def user_input
@@ -14,7 +15,12 @@ class Notes
       @input.to_s
       @command = @input.split(' ')
       @command.shift
-      @note = @command.join(' ')
+      @note_text = @command.join(' ')
+      @note = {
+        note: @note_text,
+        time: Time.now.strftime('%d-%m-%Y'),
+        note_id: (@note_id += 1)
+      }
       @notebook << @note
       puts "note stored"
       puts @notebook
@@ -45,7 +51,7 @@ Exit: to exit the notes app"
   end
 
   def all_notes_header
-    puts " Content || Created "
+    puts "Content || Created"
   end
 
   def all_notes
@@ -55,8 +61,8 @@ Exit: to exit the notes app"
   end
 
   def print
-    all_notes_header
-    all_notes
+    puts all_notes_header
+    puts all_notes
   end
 
 end
