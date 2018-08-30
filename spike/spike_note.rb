@@ -35,10 +35,6 @@ All: to see all the notes currently stored.
 Exit: to exit the notes app"
   end
 
-  def list_of_notes
-    @notebook
-  end
-
   def all_notes_header
     puts ["NoteId || Note || Created"]
   end
@@ -54,6 +50,10 @@ Exit: to exit the notes app"
       note[:note_id] == (id)
       puts "#{note[:note_id]} || #{note[:note]} || #{note[:time]}"
     end
+  end
+
+  def exit_app
+    exit
   end
 
   def all
