@@ -52,6 +52,7 @@ Exit: to exit the notes app"
   def view(id)
     @notebook.select do |note|
       note[:note_id] == (id)
+      puts "#{note[:note_id]} || #{note[:note]} || #{note[:time]}"
     end
   end
 
