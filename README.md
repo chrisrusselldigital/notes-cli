@@ -1,12 +1,51 @@
-# Makers' Goal: CLI Note app
+# Command Line Interface Note app
 
-A command-line interface app, demonstrating some Ruby chops.
+A command-line interface app, demonstrating some Ruby, with TDD.
 
 ## Testing
 
 TDD - `RSpec`
 Code style - `rubocop`
 Code coverage - `SimpleCov`
+
+## User stories
+
+```
+- User should be able to run the notes app ruby notes.rb
+
+Commands available to user:
+  - “Help” to see all the available commands and their descriptions.
+  - “Create” followed by the text string to store a note.
+  - “View” followed by an argument of the note id to see the text of a note
+  - “All” to see all the notes currently stored.
+  - “Exit” to exit the notes app
+
+```
+
+Example interaction:
+```
+> ruby notes.rb
+
+> help
+Help: to see all the available commands and their descriptions.
+Create: followed by the text string to store a note
+View [id]:to see the text of a note
+All: to see all the notes currently stored
+Exit: to exit the notes app
+
+> create hello, world
+note(id: 1) stored
+
+> view 1
+Wed 16th May at 12:00pm - hello, world
+
+> all
+id | Date | text
+1 | Wed 16th May at 12:00pm | hello, world
+
+> exit
+Goodbye!
+```
 
 ## (Planned) MVP
 
