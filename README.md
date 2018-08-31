@@ -14,6 +14,8 @@ Code coverage - `SimpleCov`
 
 ## User stories
 
+Based on [this document](https://docs.google.com/document/d/1vLta0y8VAeq3126fgE0ImN2Ybbc8JSmO8EaMiXZg4vk/edit?usp=sharing) (opens in Google Drive)
+
 ```
 - User should be able to run the notes app ruby notes.rb
 
