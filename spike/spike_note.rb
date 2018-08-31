@@ -8,6 +8,7 @@ class Notes
   end
 
   def user_input
+    puts "Enter a command: "
     @input = gets.chomp
     input_selector
   end
@@ -20,7 +21,7 @@ class Notes
     elsif @input == "all"
       all
     elsif @input =~ /^view/
-      view
+      transform_input_to_view
     end
   end
 
@@ -32,10 +33,18 @@ class Notes
     store_note
   end
 
+  def transform_input_to_view
+    @input.to_s
+    @command = @input.split(' ')
+    @command.shift
+    @view_num = @command.join(' ')
+    view
+  end
+
   def store_note
     @note = {
       note: @note_text,
-      created_at: Time.now.strftime('%d-%m-%Y'),
+      created_at: Time.now.strftime('%a %dth %b at%l:%M'),
       note_id: (@note_id += 1)
     }
 
@@ -64,11 +73,11 @@ user_input
     end
   end
 
-  def view(id)
-    @notebook.select do |note|
-      note[:note_id] == (id)
-      puts "#{note[:note_id]} || #{note[:note]} || #{note[:created_at]}"
-    end
+  def view
+    @notebook.find { |note|
+      note[:note_id] == @view_num
+      p note[:created_at] + " - " + note[:note]
+      }
     user_input
   end
 
