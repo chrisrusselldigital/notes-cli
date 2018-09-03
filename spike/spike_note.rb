@@ -44,13 +44,12 @@ class Notes
   def store_note
     @note = {
       note: @note_text,
-      created_at: Time.now.strftime('%a %dth %b at%l:%M'),
+      created_at: Time.now.strftime('%a %dth %b at %l:%M'),
       note_id: (@note_id += 1)
     }
 
     @notebook << @note
     puts "note (id: #{@note_id}) stored"
-    puts @notebook
     user_input
   end
 
@@ -64,13 +63,15 @@ user_input
   end
 
   def all_notes_header
-    puts ["NoteId || Note || Created"]
+    header = "NoteId || Note || Created"
+    header
   end
 
   def all_notes
     @notebook.each do |item|
       puts "#{item[:note_id]} || #{item[:note]} || #{item[:created_at]}"
     end
+
   end
 
   def view
@@ -86,8 +87,8 @@ user_input
   end
 
   def all
-    print all_notes_header
-    print all_notes
+    puts all_notes_header
+    all_notes
     user_input
   end
 
