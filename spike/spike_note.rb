@@ -1,9 +1,10 @@
+require_relative 'spike_viewer'
+
 class Notes
 
-  attr_reader :notebook
-
   def initialize
-    @notebook = []
+    @viewer = Viewer.new
+    @notebook = @viewer.notebook
     @note_id = 0
   end
 
@@ -19,7 +20,8 @@ class Notes
     elsif @input =~ /^create/
       transform_input_to_note
     elsif @input == "all"
-      all
+      @viewer.all
+      user_input
     elsif @input =~ /^view/
       transform_input_to_view
     end
@@ -37,8 +39,9 @@ class Notes
     @input.to_s
     @command = @input.split(' ')
     @command.shift
-    @view_num = @command.join(' ')
-    view
+    view_num = @command.join(' ')
+    @viewer.view(view_num)
+    user_input
   end
 
   def store_note
@@ -62,34 +65,8 @@ Exit: to exit the notes app"
 user_input
   end
 
-  def all_notes_header
-    header = "NoteId || Note || Created"
-    header
-  end
-
-  def all_notes
-    @notebook.each do |item|
-      puts "#{item[:note_id]} || #{item[:note]} || #{item[:created_at]}"
-    end
-
-  end
-
-  def view
-    @notebook.find { |note|
-      note[:note_id] == @view_num
-      p note[:created_at] + " - " + note[:note]
-      }
-    user_input
-  end
-
   def exit_app
     exit
-  end
-
-  def all
-    puts all_notes_header
-    all_notes
-    user_input
   end
 
 end
